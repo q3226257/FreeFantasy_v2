@@ -43,6 +43,7 @@ from thorpy.elements.launchers.colorsetterlauncher import ColorSetterLauncher
 from thorpy.elements.paramsetter import ParamSetter
 from thorpy.elements.background import Background
 from thorpy.elements.image import Image
+from thorpy.elements.table_list import TableList
 from thorpy.elements.box import Box, BarBox
 from thorpy.elements.browserlight import BrowserLight
 from thorpy.elements.browser import Browser

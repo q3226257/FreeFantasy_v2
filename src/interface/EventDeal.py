@@ -10,5 +10,5 @@ class Render:
 
 
 class Update:
-    def update(self, fps):
+    def update(self, fps, *params):
         pass

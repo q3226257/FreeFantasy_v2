@@ -14,7 +14,7 @@ class ImageFrame(Painter):
         self.img_path = img_path
         self.colorkey = colorkey
         self.mode = mode
-##        print("type3",img_path)
+        ##        print("type3",img_path)
         size = list(self.init_get_img().get_size())
         W, H = functions.get_screen_size()
         if self.mode == "cut":
@@ -38,12 +38,11 @@ class ImageFrame(Painter):
         Painter.set_size(self, size)
         self._resized = size
 
-
     def init_get_img(self):
         """Only to find size of image during initialization."""
         if isinstance(self.img_path, str):
             return load_image(self.img_path, colorkey=self.colorkey,
-                                use_img_dict=False)
+                              use_img_dict=False)
         elif isinstance(self.img_path, Surface):
             return self.img_path
         else:
@@ -72,8 +71,8 @@ class ImageFrame(Painter):
             surface = scale(surface, self._resized)
         elif self.mode:
             functions.debug_msg("Unrecognized mode : ", self.mode)
-##        elif self._resized:
-##            surface = scale(surface, self._resized)
+        ##        elif self._resized:
+        ##            surface = scale(surface, self._resized)
         if self.colorkey:
             surface.set_colorkey(self.colorkey, RLEACCEL)
         surface.set_clip(self.clip)
@@ -109,6 +108,20 @@ class ButtonImage(ImageFrame):
         else:
             surface = ImageFrame.get_image(self)
         return surface
+
+
+class ButtonSurface(ImageFrame):
+
+    def __init__(self, surface, img_pressed=None, img_hover=None, alpha=255,
+                 colorkey=None, clip=None, pressed=False, mode=None,
+                 hovered=False):
+        ImageFrame.__init__(self, "", alpha, colorkey, clip, pressed,
+                            mode, hovered)
+        self.surface = surface
+
+    def get_image(self):
+        return self.surface
+
 
 class ButtonImageFrame(ButtonImage):
 

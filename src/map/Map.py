@@ -1,6 +1,10 @@
 from pygame import *
+import pygame
 import tmx
+import main.Main
 from interface.EventDeal import *
+from info.App import *
+from main.Constant import *
 
 
 class ABSMap(EventDeal, Update):
@@ -15,7 +19,12 @@ class ABSMap(EventDeal, Update):
         for event in pygame.event.get():
             print(event)
 
-    def update(self, fps):
+    def update(self, fps, *params):
+        # while AppInfo.current_stat == STAT.MAP_STAT:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                main.Main.change_stat(STAT.MENU_STAT)
+
         position = self.initial_position
         if self.Player is not None:
             position = self.Player.position

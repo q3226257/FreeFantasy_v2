@@ -1,3 +1,7 @@
+import main.Constant
+
+
 class AppInfo:
     current_map = None
-    showMenu = False
+    # 状态
+    current_stat = main.Constant.STAT.MAP_STAT
